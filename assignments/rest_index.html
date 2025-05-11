@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP REST API Consumer</title>
+</head>
+<body>
+    <h1>REST API Consumer</h1>
+    <button onclick="fetchUsers()">Get Users</button>
+    <ul id="user-list"></ul>
+    <script>
+        function fetchUsers() {
+            fetch("http://localhost/assignments/rest_api.php")
+                .then(response => response.json())
+                .then(data => {
+                    let list = document.getElementById("user-list");
+                    list.innerHTML = "";
+                    data.forEach(user => {
+                        let li = document.createElement("li");
+                        li.textContent = `${user.name} (Age: ${user.age}`;
+                        list.appendChild(li);
+                    });
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
