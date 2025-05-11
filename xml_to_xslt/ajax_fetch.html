@@ -1,0 +1,27 @@
+<html> 
+<head> 
+    <script>
+        function loadXMLDoc(url)
+        {
+            var xmlhttp;
+            xmlhttp=new XMLHttpRequest(); 
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                { document.getElementById('A1').innerHTML=xmlhttp.status;
+                document.getElementById('A2').innerHTML=xmlhttp.statusText;
+                document.getElementById('A3').innerHTML=xmlhttp.responseText; }
+            }
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send();
+            }
+    </script>
+</head>
+<body>
+    <h2>Retrieve data from XML file</h2>
+    <p> <b>Status:</b><span id="A1"></span></p>
+    <p> <b> Status text:</b> <span id="A2"></span> </p> 
+    <p><b> Response: </b><span id="A3"> </span></p>
+    <button onclick="loadXMLDoc('user.xml')">Get XML data</button> 
+</body>
+</html>

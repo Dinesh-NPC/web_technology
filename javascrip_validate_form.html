@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Course Registration Form</title>
+<script>
+function validateForm(event) {
+event.preventDefault();
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var phone = document.getElementById("phone").value;
+var course = document.getElementById("course").value;
+if (name === "" || email === "" || phone === "" || course === "") {
+alert("All fields are required!");
+return false;
+}
+var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if (!email.match(emailPattern)) {
+alert("Invalid email format!");
+return false;
+}
+var phonePattern = /^\d{10}$/;
+if (!phone.match(phonePattern)) {
+alert("Invalid phone number! It should be 10 digits.");
+return false;
+}
+window.location.href = "success.html";
+return true;
+}
+</script>
+</head>
+<body>
+<h2>Course Registration Form</h2>
+<form onsubmit="validateForm(event)">
+<label for="name">Full Name:</label>
+<input type="text" id="name" name="name"><br><br>
+<label for="email">Email:</label>
+<input type="text" id="email" name="email"><br><br>
+<label for="phone">Phone Number:</label>
+<input type="text" id="phone" name="phone"><br><br>
+<label for="course">Select Course:</label>
+<select id="course" name="course">
+<option value="">--Select a Course--</option>
+<option value="Web Development">Web Development</option>
+<option value="Data Structure">Data Structure</option>
+<option value="Database Management">Database Management</option>
+</select><br><br>
+<button type="submit">Register</button>
+</form>
+</body>
+</html>
